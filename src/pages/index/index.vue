@@ -21,6 +21,8 @@ const getHomeCategoryData = async () => {
   categoryList.value = res.result
 }
 
+const guessRef = ref([])
+
 // 页面加载
 onLoad(async () => {
   await Promise.all([getHomeBannerData(), getHomeCategoryData()])
@@ -33,7 +35,8 @@ onLoad(async () => {
   <XtxSwiper :list="bannerList" />
   <!-- 分类面板 -->
   <CategoryPanel :list="categoryList" />
-  <view class="index">index</view>
+  <!-- 猜你喜欢 -->
+  <XtxGuess ref="guessRef" />
 </template>
 
 <style lang="scss">
